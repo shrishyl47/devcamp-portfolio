@@ -44,5 +44,5 @@ class PortfoliosController < ApplicationController
   		format.html {redirect_to portfolios_path, notice: 'portfolio has been removed'}
   	end
   end
-
+ 
 end
