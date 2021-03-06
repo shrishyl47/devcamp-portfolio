@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/shrishyl47/shrishyl_view_tool
+  revision: 6f5e1e6327c22a3ff1bc9ccf8e54f56c13caf7db
+  branch: main
+  specs:
+    shrishyl_view_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -242,6 +249,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)
   sass-rails (>= 6)
+  shrishyl_view_tool!
   spring
   turbolinks (~> 5)
   tzinfo-data
