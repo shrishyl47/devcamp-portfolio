@@ -61,4 +61,4 @@ gem 'devise', '~> 4.2'
 gem 'pry-byebug'
 gem 'bootstrap', '~> 5.0.0.beta2'
 
-gem 'shrishyl_view_tool', git: 'https://github.com/shrishyl47/shrishyl_view_tool', branch: :main
+gem 'shrishyl_view_tool', '~> 0.1.0'
