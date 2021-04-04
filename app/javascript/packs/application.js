@@ -8,7 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
-// import "jquery-ui"
+import "jquery-ui"
 import "html5sortable"
 
 Rails.start()
