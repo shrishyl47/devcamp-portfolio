@@ -1,0 +1,184 @@
+## Initial setup configuration for Ubuntu ##
+
+sudo apt install git
+sudo apt install vim
+sudo apt-get install curl
+git config --global user.email "xxxx@xxxx.com"
+git config --global user.name "xxxx"
+git remote add origin git@github.com:{user.name}/{repo.name}.git
+
+__________________________________________________________
+## Install nvm ##
+https://www.github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+nvm -v
+
+__________________________________________________________
+## Install LTS node version ##
+nvm ls-remote
+nvm install v14.15.4
+nvm use 14.15.4
+sudo apt install nodejs
+node -v
+
+__________________________________________________________
+## Setup Heroku ##
+sudo snap install heroku --classic
+login:
+heroku login
+create:
+heroku create hello-git
+push:
+git init
+git add .
+git commit -m "testing heroku"
+heroku git:remote -a hello-heroku
+git push heroku master
+
+__________________________________________________________
+## Install Ruby ##
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+rvm list
+rvm install 2.7.1
+rvm --default use ruby-2.7.1
+ruby -v
+
+# Install gems without documentation #
+echo "gem: --no-document" >> ~/.gemrc
+
+# Install Rails #
+gem install bundler
+gem install nokogiri
+gem install rails #Install latest rails version
+gem install rails -v 5.2.0 #Install specific rails version
+rails -v
+
+__________________________________________________________
+## Install Yarn and Webpacker ##
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install --no-install-recommends yarn
+yarn --version
+
+rails webpacker:install
+
+__________________________________________________________
+## Install postgresql ##
+sudo apt-get install postgresql postgresql-contrib libpq-dev
+
+# create user:
+sudo -u postgres createuser -s railsdevuser #railsdevuser is user.name
+# login to postgres:
+sudo -u postgres psql
+# change password:
+\password railsdevuser
+\q
+# User role error fix:
+Role does not exist:ActiveRecord:ConnectionNotEstablished
+sudo su - postgres
+createuser -s -r [name]
+Ctrl+D
+
+__________________________________________________________
+## Install bootstrap with webpack jquery in Rails 6 ##
+# https://gorails.com/forum/install-bootstrap-with-webpack-with-rails-6-beta
+
+yarn add bootstrap@4.4.1 jquery popper.js
+
+# config/webpack/environment.js add the following:
+const { environment } = require('@rails/webpacker')
+const webpack = require('webpack')
+environment.plugins.prepend('Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.Tether': "tether",
+    Popper: ['popper.js', 'default']
+  })
+)
+module.exports = environment
+
+# app/javascript/packs/application.js add the following:
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+require("bootstrap") //includes jquery as well
+
+# application.scss file:
+@import "bootstrap";
+
+__________________________________________________________
+## Install jquery-ui in Rails 6 ##
+#https://github.com/jquery-ui-rails/jquery-ui-rails
+Required for html5sortable to work
+
+# add gem
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+bundle install
+
+yarn add jquery-ui-dist
+
+# app/javascript/packs/application.js add the following as is:
+require("bootstrap") //includes jquery as well
+require("jquery-ui-dist/jquery-ui");
+
+# portfolios.scss file:
+@import "jquery-ui-dist/jquery-ui";
+
+# config/webpack/environment.js:
+const aliasConfig = {
+    'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
+};
+
+environment.config.set('resolve.alias', aliasConfig);
+
+__________________________________________________________
+## Install coffeescript in Rails 6 ##
+
+rails webpacker:install:coffee
+
+# change the line in package.json:
+"coffee-loader": "^2.0.0" to "coffee-loader": "0.9.0"
+
+yarn install --check-files
+
+__________________________________________________________
+## Integrate html5sortable in Rails 6 for drag drop ##
+https://github.com/lukasoppermann/html5sortable/blob/latest-release/dist/html5sortable.js
+or https://github.com/jordanhudgens/devcamp-portfolio/blob/master/app/assets/javascripts/html.sortable.js
+
+# copy the html5sortable.js file to app/javascript/ folder
+
+# edit portfolios index html file to create css class:
+<div class="row sortably">
+	<%= render partial: 'portfolio_item', collection: @portfolio_items %>
+</div>
+
+# create a new file portfolios.coffee in app/javascript/ folder:
+ready = undefined
+ready = ->
+	$('.sortably').sortable()
+	return
+$(document).ready ready
+
+# application.js:
+require("html5sortable");
+require("portfolios");
+
+__________________________________________________________
+# Creating a web application #
+rails new DevcampPortfolio -T --database=postgresql
+(-T = not install test framework)
+rails db:create
+rails db:migrate
+rails s
+
+# Scaffold #
+rails g scaffold Blog title:string body:text
+(g = generator, scaffold = type of generator, Blog = name of the feature, title = attribute, string = datatype)
+rails db:migrate
+localhost:3000/blogs
+
+__________________________________________________________
