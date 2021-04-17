@@ -5,6 +5,9 @@ class Portfolio < ApplicationRecord
 	include Placeholder
 	validates_presence_of :title, :body, :main_image, :thumb_image
 
+	mount_uploader :thumb_image, AvatarUploader
+	mount_uploader :main_image, AvatarUploader
+
 	# One way to write custom scope
 	def self.angular
 		where(subtitle: 'Angular')
