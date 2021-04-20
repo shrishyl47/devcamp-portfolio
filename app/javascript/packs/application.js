@@ -13,3 +13,4 @@ require("jquery-ui-dist/jquery-ui");
 
 require("html5sortable");
 require("portfolios");
+require("cocoon-js");

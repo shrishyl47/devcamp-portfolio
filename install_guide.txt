@@ -168,6 +168,18 @@ require("html5sortable");
 require("portfolios");
 
 __________________________________________________________
+## Install cocoon in Rails 6 ##
+
+# add gem
+gem 'cocoon', '~> 1.2', '>= 1.2.15'
+bundle install
+
+yarn add cocoon-js
+
+# app/javascript/packs/application.js add the following as is:
+require("cocoon-js")
+
+__________________________________________________________
 # Creating a web application #
 rails new DevcampPortfolio -T --database=postgresql
 (-T = not install test framework)
