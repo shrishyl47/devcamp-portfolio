@@ -1,5 +1,8 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "jquery-ui-dist/jquery-ui";
+@import "gritter";
+
 /*
 * Globals
 */
@@ -209,4 +212,11 @@ width: 55rem;
 
 .app-footer {
 	color: white;
+}
+
+.custom_gritter {
+  background-color: black;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid white;
 }

@@ -180,6 +180,21 @@ yarn add cocoon-js
 require("cocoon-js")
 
 __________________________________________________________
+## Install gritter in Rails 6 ##
+
+# add gem
+gem 'gritter', '~> 1.2'
+bundle install
+
+yarn add gritter
+
+# app/javascript/packs/application.js add the following as is:
+require("gritter")
+
+# application/blogs/portfolios.scss file:
+@import "gritter";
+
+__________________________________________________________
 # Creating a web application #
 rails new DevcampPortfolio -T --database=postgresql
 (-T = not install test framework)
