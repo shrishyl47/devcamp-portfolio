@@ -69,4 +69,16 @@ module ApplicationHelper
 		"active" if current_page? path
 		# return active if the current page(rails inbuilt method) matches the path we pass in.
 	end
+
+	def alerts
+		alert = (flash[:alert] || flash[:error] || flash[:notice])
+
+		if alert
+			alert_generator alert
+		end
+	end
+
+	def alert_generator message
+		js add_gritter(message, title: "Shrishyl Portfolio", sticky: false, class_name: "custom_gritter", time: 1000)
+	end
 end
