@@ -159,7 +159,7 @@ width: 100%; /* Must be percentage or pixels for horizontal alignment */
 .masthead,
 .mastfoot,
 .cover-container {
-width: 55rem;
+width: 70rem;
 }
 }
 
@@ -219,4 +219,15 @@ width: 55rem;
   border-radius: 5px;
   text-align: center;
   border: 1px solid white;
+}
+
+.tech-news {
+  color: black;
+  margin: 5px;
+}
+.tech-news a {
+  color: blue;
+}
+.tech-news > .card {
+	padding: 20px;
 }
