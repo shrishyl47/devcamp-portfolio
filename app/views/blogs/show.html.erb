@@ -13,7 +13,9 @@
 	<!-- End of comment form -->
 
 	<!-- Start of comments -->
-	<%= render @blog.comments %>
+	<div id="comments" data-blog-id="<%= @blog.id %>">
+		<%= render @blog.comments %>
+	</div>
 	<!-- shortcut - It looks in the views for a partial called _comment -->
 
 	<!-- End of comments -->
