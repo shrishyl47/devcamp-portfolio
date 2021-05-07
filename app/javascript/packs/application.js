@@ -8,6 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+require("jquery")
 require("bootstrap") //includes jquery as well
 require("jquery-ui-dist/jquery-ui");
 

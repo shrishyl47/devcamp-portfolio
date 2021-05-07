@@ -8,9 +8,21 @@
 		<%= @blog.body %>
 	</p>
 
+	<!-- Start of comment form -->
+	<%= render 'comments/comment_form' %>
+	<!-- End of comment form -->
+
+	<!-- Start of comments -->
+	<div id="comments" data-blog-id="<%= @blog.id %>">
+		<%= render @blog.comments %>
+	</div>
+	<!-- shortcut - It looks in the views for a partial called _comment -->
+
+	<!-- End of comments -->
+
   <!-- <nav class="blog-pagination">
     <a class="btn btn-outline-primary" href="#">Older</a>
     <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-</nav> -->
+  </nav> -->
 
 </div>
