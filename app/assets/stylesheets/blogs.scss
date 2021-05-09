@@ -1,5 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "jquery-ui-dist/jquery-ui";
+@import "gritter";
 @import "font-awesome";
 
 /*
@@ -175,6 +177,13 @@ h6, .h6 {
  */
 .social-links li {
   font-size: 1.0em;
+}
+
+.custom_gritter {
+  background-color: black;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid white;
 }
 
 .comment-card > .card {
