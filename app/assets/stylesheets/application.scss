@@ -232,3 +232,24 @@ width: 70rem;
 .tech-news > .card {
 	padding: 20px;
 }
+
+.about-me-container {
+	color: black;
+	text-align: left;
+}
+.about-me-container > .card {
+	padding: 30px;
+}
+.about-me-container > .card > .row {
+	margin-top: 10px;
+}
+.contact-me-container {
+	color: black;
+	text-align: left;
+}
+.contact-me-container > .card {
+	padding: 30px;
+}
+.contact-me-container > .card > .row {
+	margin-top: 10px;
+}
