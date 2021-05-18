@@ -16,3 +16,5 @@ require("html5sortable");
 require("portfolios");
 require("cocoon-js");
 require("gritter/js/jquery.gritter.js")
+require("lib/typed");
+require("typed-implementation");
